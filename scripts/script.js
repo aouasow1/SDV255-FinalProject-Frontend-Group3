@@ -6,7 +6,19 @@ addEventListener('DOMContentLoaded', async function() {
     let html = ''
     for (let course of courses) {
         let courseID = course._id
-        html+= `<li>${course.name} - ${course.description} - <a href='information.html?id=${courseID}'>Course Information</a> - <a href='edit.html?id=${courseID}'>Edit Course</a> - <a href='delete.html?id=${courseID}'>Delete Course</a></li>`
+        html+= `
+        <tr>
+            <td>${course.name}</td>
+            <td>${course.description}</td>
+            <td>${course.subjectArea}</td>
+            <td>${course.credits}</td>
+            <td>
+                <a href='information.html?id=${courseID}'>Course Information</a> |
+                <a href='edit.html?id=${courseID}'>Course Edit</a>
+            </td>
+        </tr>
+        
+        `
     }
     document.querySelector('#all_course').innerHTML = html
 })
