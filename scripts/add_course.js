@@ -13,7 +13,7 @@ async function addCourse() {
         credits: document.querySelector("#credit").value
     }
 
-    const response = await fetch("http://localhost:3001/api/courses", {
+    const response = await fetch("https://skillful-common-laugh.glitch.me/api/courses", {
         method: "POST",
         headers: {
             "Content-Type" : "application/json"

@@ -3,7 +3,7 @@ addEventListener("DOMContentLoaded", async function() {
     const urlparam = new URLSearchParams(window.location.search)
     const courseID = urlparam.get('id')
 
-    const response= await fetch("http://localhost:3001/api/courses/" + courseID)
+    const response= await fetch("https://skillful-common-laugh.glitch.me/api/courses/" + courseID)
 
     if (response.ok) {
         let course = await response.json()
@@ -28,7 +28,7 @@ async function editCourse() {
         credits: document.querySelector('#credit').value,
     }
 
-    const response= await fetch("http://localhost:3001/api/courses/" + courseID, {
+    const response= await fetch("https://skillful-common-laugh.glitch.me/api/courses/" + courseID, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

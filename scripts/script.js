@@ -1,6 +1,6 @@
 
 addEventListener('DOMContentLoaded', async function() {
-    const response = await fetch('http://localhost:3001/api/courses')
+    const response = await fetch('https://skillful-common-laugh.glitch.me/api/courses')
     const courses =await response.json()
 
     let html = ''

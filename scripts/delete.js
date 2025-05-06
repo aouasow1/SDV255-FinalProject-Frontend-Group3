@@ -5,7 +5,7 @@ addEventListener("DOMContentLoaded", async function() {
 
 
 async function getAllCourses() {
-    const response = await fetch("http://localhost:3001/api/courses/");
+    const response = await fetch("https://skillful-common-laugh.glitch.me/api/courses/");
     if (response.ok) {
 
         const courses = await response.json()
@@ -21,7 +21,7 @@ async function getAllCourses() {
 async function deleteCourse() {
     // Get the course ID of the selected course
     const courseID = document.querySelector("#courseDropDown option:checked").value
-    const response = await fetch("http://localhost:3001/api/courses/"+ courseID, {
+    const response = await fetch("https://skillful-common-laugh.glitch.me/api/courses/"+ courseID, {
         method: "DELETE"
     });
 
