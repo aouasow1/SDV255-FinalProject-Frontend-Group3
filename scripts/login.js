@@ -14,7 +14,7 @@ async function login(username, password) {
     }
 
     //send the login post request to the backend
-    const response = await fetch("http://localhost:3001/api/auth/", {
+    const response = await fetch("https://skillful-common-laugh.glitch.me/api/auth/", {
         method: "POST",
         headers: {
             "Content-Type" : "application/json"
