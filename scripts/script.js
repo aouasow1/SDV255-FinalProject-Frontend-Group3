@@ -12,7 +12,7 @@ addEventListener('DOMContentLoaded', async function() {
             <td>${course.description}</td>
             <td>${course.subjectArea}</td>
             <td>${course.credits}</td>
-            <td>${song.username}</td>
+            <td>${course.username}</td>
             <td>
                 <a href='information.html?id=${courseID}'>Course Information</a> |
                 <a href='edit.html?id=${courseID}'>Course Edit</a>
