@@ -16,6 +16,7 @@ addEventListener('DOMContentLoaded', async function() {
             <td>
                 <a href='information.html?id=${courseID}'>Course Information</a> |
                 <a href='edit.html?id=${courseID}'>Course Edit</a>
+                <a href='delete.html?id=${courseID}'>Delete Course</a>
             </td>
         </tr>
         
