@@ -3,121 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Front End</title>
-    <script src="scripts/login.js"></script>
+    <title>Course Front End Login</title>
     <style>
         body {
-          font-family: Arial, sans-serif;
-          background-color: #f4f7f9;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding-top: 60px;
-          margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 60px;
+            margin: 0;
         }
-      
+
         #login {
-          background: #fff;
-          padding: 30px 40px;
-          border-radius: 10px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          width: 320px;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 320px;
         }
-      
+
         #login div {
-          margin-bottom: 20px;
+            margin-bottom: 20px;
         }
-      
+
         label {
-          display: block;
-          margin-bottom: 6px;
-          font-weight: bold;
-          color: #333;
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333;
         }
-      
-        input[type="text"] {
-          width: 100%;
-          padding: 10px 12px;
-          font-size: 14px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          box-sizing: border-box;
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
         }
-      
+
         button {
-          width: 100%;
-          padding: 10px;
-          background-color: #007bff;
-          border: none;
-          color: #fff;
-          font-size: 16px;
-          border-radius: 5px;
-          cursor: pointer;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
         }
-      
+
         button:hover {
-          background-color: #0056b3;
+            background-color: #0056b3;
         }
-      
+
         #errorMsg {
-          color: red;
-          font-size: 14px;
-          margin-top: 10px;
-          text-align: center;
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
         }
-      
+
         p {
-          margin-top: 20px;
-          font-size: 14px;
-          text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
         }
-      
+
         a {
-          color: #007bff;
-          text-decoration: none;
+            color: #007bff;
+            text-decoration: none;
         }
-      
+
         a:hover {
-          text-decoration: underline;
+            text-decoration: underline;
         }
-      
+
         #statusBtn {
-          margin-top: 10px;
-          background-color: #28a745;
+            margin-top: 10px;
+            background-color: #28a745;
         }
-      
+
         #statusBtn:hover {
-          background-color: #1e7e34;
+            background-color: #1e7e34;
         }
-      </style>
+    </style>
 </head>
 <body>
-    <!--<nav>
-        <nav class="navbar navbar-expand-lg bg-primary">
-            <div class="container">
-                <a class="navbar-brand fs-3" href="index.html">All Courses</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active fs-3" aria-current="page" href="add_course.html">Add Courses</a>
-                    <a class="nav-link active fs-3 text-danger text-decoration-underline" href="delete.html">Delete Courses</a>
-                </div>
-                </div>
-            </div>
-        </nav>
-        
-    </nav>-->
-    
     <form id="login" autocomplete="off">
         <div>
-            <label for="username">UserName:</label>
-            <input type="text" id="username">
+            <label for="userType">Select User Type:</label>
+            <select id="userType">
+                <option value="student">Student</option>
+                <option value="staff">Staff</option>
+            </select>
+        </div>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your username">
         </div>
         <div>
             <label for="password">Password:</label>
-            <input type="text" id="password">
+            <input type="password" id="password" placeholder="Enter your password">
         </div>
         <button type="button" id="loginBtn">Login</button>
         <p id="errorMsg"></p>
@@ -125,5 +115,33 @@
 
     <p>Not Registered? <a href="registration.html">Click Here to Register</a></p>
     <button type="button" id="statusBtn">Display Status</button>
+
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', function () {
+            const userType = document.getElementById('userType').value;
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (!username || !password) {
+                errorMsg.textContent = "Please enter both username and password.";
+                return;
+            }
+
+            // Hardcoded login (temporary)
+            if (username === "Aoua" && password === "sow") {
+                localStorage.setItem("uname", username);
+                localStorage.setItem("role", userType);
+                localStorage.setItem("auth", 1);
+                window.location.href = "index.html";
+            } else {
+                errorMsg.textContent = "Login failed. Invalid credentials.";
+            }
+        });
+
+        document.getElementById('statusBtn').addEventListener('click', function () {
+            alert(`Logged in as: ${localStorage.getItem("uname") || "None"}, Role: ${localStorage.getItem("role") || "None"}`);
+        });
+    </script>
 </body>
 </html>
