@@ -57,7 +57,6 @@
             <div class="navbar-nav">
                 <a class="nav-link active fs-3" aria-current="page" href="add_course.html">Add Courses</a>
                 <a class="nav-link active fs-3 text-danger text-decoration-underline" href="delete.html">Delete Courses</a>
-                <a class="navbar-brand fs-3" href="schedule.html">Schedule</a>
             </div>
             </div>
         </div>
@@ -65,16 +64,43 @@
         <button id="logout" style="float: right;">LogOut</button>
     </nav>
 <body>
-    <nav class="nav">
-        <a class="nav-link active" href="index.html">All course</a>
-        <a href="information.html"></a>
-        <button id="logout" style="float: right;">LogOut</button>
-    </nav>
-    <br>
-    <div></div>
-    <br>
-    <h1></h1>
-    <div></div>
-</body>
-</html>
 
+    <h1>My Class Schedule</h1>
+    <div id="scheduleContainer">Loading schedule...</div>
+  
+    <script>
+      function loadSchedule() {
+        const data = localStorage.getItem("studentSchedule");
+        const container = document.getElementById("scheduleContainer");
+  
+        if (!data) {
+          container.textContent = "No schedule found. Go to the checkout page and confirm your classes.";
+          return;
+        }
+  
+        const courses = JSON.parse(data);
+  
+        if (courses.length === 0) {
+          container.textContent = "You have not added any classes.";
+          return;
+        }
+  
+        container.innerHTML = "";
+        courses.forEach(course => {
+          const div = document.createElement("div");
+          div.className = "schedule-item";
+          div.innerHTML = `
+            <strong>${course.name}</strong><br>
+            <em>${course.description}</em><br>
+            Subject Area: ${course.subjectArea} | Credits: ${course.credits}<br>
+            Added by: ${course.username}
+          `;
+          container.appendChild(div);
+        });
+      }
+  
+      loadSchedule();
+    </script>
+  
+  </body>
+  </html>
