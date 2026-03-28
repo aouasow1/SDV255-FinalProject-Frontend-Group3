@@ -19,7 +19,7 @@ async function addCourse() {
         role: role
     }
 
-    const response = await fetch("https://skillful-common-laugh.glitch.me/api/courses", {
+    const response = await fetch("https://5d773eba-9e9c-400e-91b6-9f61a503955b-00-2tr6fvk65b0oz.janeway.replit.dev/api/courses", {
         method: "POST",
         headers: {
             "Content-Type" : "application/json"
